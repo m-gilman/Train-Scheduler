@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="shortcut icon" type="image/png" href="./assets/images/favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+        <!-- Moment.js Reference -->
+    <!-- <script src="http://momentjs.com/downloads/moment.js"></script>   -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
     <title>Train Scheduler</title>
 </head>
 
@@ -33,46 +39,119 @@
             </ul>
         </div>
     </nav>
-    <!-- MAIN CONTAINER... Everything except nav and header will be inside this container -->
+    <!-- MAIN CONTAINER... Everything except nav and footer will be inside this container -->
     <div class="pagewrap container">
         <div class="row mt-5 pt-3">
         </div>
         <!-- The first row is hidden under the navbar -->
         <!--/END navigation -->
 
-        <div class="bgTransparent">
-            <p>Some Content Here</p>
-        </div>
+        <div class="fluid-container bgTransparent">
 
+            <!-- Jumbotron -->
+            <div class="jumbotron">
+                <h1 class="display-4 text-center">Anytime is Train Time</h1>
+                <h3 class="text-center">Choo Choo</h3>
+            </div>
 
+            <div class="row">
+                <div class="col">
 
-        
-        <footer class="p-2 fixed-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm text-center">
-                    </div>
-                    <div class="col-sm text-center"> &copy; Copyright 2018 Melissa Gilman
-                    </div>
-                    <div class="col-sm text-center">
-                        <!-- <p class="credit text-right">Credit images: 
-                        <a href="https://www.freepik.com/free-photos-vectors/design" target="_blank">Design vector created by Freepik</a>  -->
-                        </p>
+                    <!-- Current Train Schedule-->
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>
+                                <strong>Current Train Schedule</strong>
+                            </h4>
+                        </div>
+                        <div class="card-body bg-white">
+                            <table class="table table-hover" id='train-table'>
+                                <thead>
+                                    <tr>
+                                        <th class="col-auto">Train Name</th>
+                                        <th class="col-auto">Destination</th>
+                                        <th class="col-auto">Frequency (Min)</th>
+                                        <th class="col-auto">Next Arrival</th>
+                                        <th class="col-auto">Minutes Away</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </footer>
+            <!-- /END OF train schedule row -->
+
+            <div class="row mt-2">
+                <div class="col">
+
+                    <!-- Add Train  -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>
+                                <strong>Add Train</strong>
+                            </h4>
+                        </div>
+                        <div class="card-body bg-white">
+
+                            <!-- Entry Form -->
+                            <form>
+                                <div class="form-group">
+                                    <label for="train-name-input">Train Name</label>
+                                    <input class="form-control" id="train-name-input" type="text">
+                                </div>
+                                <div class="form-group">
+                                    <label for="destination-input">Destination</label>
+                                    <input class="form-control" id="destination-input" type="text">
+                                </div>
+                                <div class="form-group">
+                                    <label for="first-train-input">First Train Time (HH:mm - Military Time)</label>
+                                    <input class="form-control" id="first-train-input" type="text">
+                                </div>
+                                <div class="form-group">
+                                    <label for="frequency-input">Frequency (min)</label>
+                                    <input class="form-control" id="frequency-input" type="number">
+                                </div>
+                                <button class="btn btn-dark" id="add-train-btn" type="submit">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-        <script src="./assets/javascript/game.js"></script>
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+
+    <footer class="p-2 fixed-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm text-center">
+                </div>
+                <div class="col-sm text-center"> &copy; Copyright 2018 Melissa Gilman
+                </div>
+                <div class="col-sm text-center">
+                    <!-- <p class="credit text-right">Credit images: 
+                        <a href="https://www.freepik.com/free-photos-vectors/design" target="_blank">Design vector created by Freepik</a> 
+                        </p> -->
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="./assets/javascript/app.js"></script>
 </body>
 
 </html>

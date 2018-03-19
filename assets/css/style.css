@@ -28,14 +28,10 @@ footer .credit a{
 
 /* BODY */
 body {
-    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
-    color: navy;
-    background: url(../images/#);
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: 0;
-    background-color: slateblue;
+    color: #222222;
+    background: url(../images/pinstriped_suit.png);
 }
 
 .bgTransparent {
@@ -44,6 +40,22 @@ body {
 }
 
 h1 {
-    font-family: Audiowide, 'Open Sans', 'Helvetica Neue', sans-serif
+    font-family: 'Abril Fatface', Cursive, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+.jumbotron {
+    background: url(../images/pinstriped_suit_@2X.png);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 0;
+    color: white;
+}
+
+.card-header {
+    background-color: #222222;
+    color: white;
+}
+
+.form-control {
+    border: black 1px solid;
+}
